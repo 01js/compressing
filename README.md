@@ -32,7 +32,7 @@ Currently supported:
 ## Install
 
 ```bash
-npm install compressing
+npm install @01js/compressing
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ Use gzip as an example, tar, tgz and zip is same as gzip.
 __promise style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 
 // compress a file
 compressing.gzip.compressFile('file/path/to/compress', 'path/to/destination.gz')
@@ -65,7 +65,7 @@ compressing.gzip.compressFile(stream, 'path/to/destination.gz')
 __stream style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 
 new compressing.gzip.FileStream({ source: 'file/path/to/compress' })
   .on('error', handleError)
@@ -98,7 +98,7 @@ __Gzip only support compressing a single file. if you want to compress a dir wit
 __promise style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 compressing.tar.compressDir('dir/path/to/compress', 'path/to/destination.tar')
 .then(compressDone)
 .catch(handleError);
@@ -107,7 +107,7 @@ compressing.tar.compressDir('dir/path/to/compress', 'path/to/destination.tar')
 __stream style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 
 const tarStream = new compressing.tar.Stream();
 tarStream.addEntry('dir/path/to/compress');
@@ -149,7 +149,7 @@ pipe(tarStream, destStream, handleError);
 __promise style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 
 // uncompress a file
 compressing.tgz.uncompress('file/path/to/uncompress.tgz', 'path/to/destination/dir')
@@ -175,7 +175,7 @@ And working with urllib is super easy. Let's download a tgz file and uncompress 
 ```js
 const urllib = require('urllib');
 const targetDir = require('os').tmpdir();
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 
 urllib.request('http://registry.npmjs.org/pedding/-/pedding-1.1.0.tgz', {
   streaming: true,
@@ -189,7 +189,7 @@ urllib.request('http://registry.npmjs.org/pedding/-/pedding-1.1.0.tgz', {
 __stream style__
 
 ```js
-const compressing = require('compressing');
+const compressing = require('@01js/compressing');
 const mkdirp = require('mkdirp');
 
 function onEntry(header, stream, next) => {
